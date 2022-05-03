@@ -6,6 +6,7 @@ Because of my coding skills limitations, the program requires a little collabora
 Procedure for GIMP:
 
 - open the image
+- Select the whole image or the portion your are interested in with the selection tool
 - Edit - Copy
 - Edit - Paste as - New Image
 - click on new image tab
