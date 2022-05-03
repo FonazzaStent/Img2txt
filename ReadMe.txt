@@ -26,4 +26,4 @@ Now load the image in the program:
 
 - Open the program, click on Edit - Open.
 
-The resulting text will appear in the text window. You can copy the text right selecting it and right clicking on or through the Edit - Copy command, if you want to paste it to another program to save it or email it.
+The resulting text will appear in the text window. You can copy the text by selecting it and right clicking on it or through the Edit - Copy command, if you want to paste it into another program to save it or email it.
