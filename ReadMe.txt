@@ -23,7 +23,7 @@ Procedure for GIMP:
 
 You can use a different photo manipulation program, as long as it can produce a 240 pixel tall image and reduce the RGB image to an indexed image with a 26 colors colormap.
 
-Now load the image in the program:
+Now load the image into the program:
 
 - Open the program, click on Edit - Open.
 
