@@ -35,9 +35,9 @@ def open_file():
     global imgfilename
     data=[('BMP', '*.bmp')]
     imgfilename=askopenfilename(filetypes=data)
-    imgfile=open(imgfilename,'rb')
-    if str(imgfile)!='None':
-            encode()
+    if str(imgfilename)!='':
+        imgfile=open(imgfilename,'rb')
+        encode()
 
 #encode
 def encode():
