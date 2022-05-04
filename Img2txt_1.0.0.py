@@ -1,8 +1,9 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import *
-from tkinter.filedialog import askopenfile
+from tkinter.filedialog import askopenfilename
 import base64
+import os
 
 #Create app window
 def create_app_window():
@@ -31,8 +32,10 @@ def create_textbox():
 #Open File
 def open_file():
     global imgfile
+    global imgfilename
     data=[('BMP', '*.bmp')]
-    imgfile=askopenfile(mode='rb',filetypes=data)
+    imgfilename=askopenfilename(filetypes=data)
+    imgfile=open(imgfilename,'rb')
     if str(imgfile)!='None':
             encode()
 
@@ -40,7 +43,9 @@ def open_file():
 def encode():
     imgtext=''
     imgfile.seek(225)
-    for pixels in range (1,19500):
+    filename=str(imgfilename)
+    imgfile_size= os.path.getsize(filename)
+    for pixels in range (1,imgfile_size-225):
         bytea=imgfile.read(1)
         bytevalue=int.from_bytes(bytea, "big")
         char=chr(int(bytevalue)+97)
