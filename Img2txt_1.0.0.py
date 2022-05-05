@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import *
 from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import asksaveasfilename
 import base64
 import os
 
@@ -41,6 +42,7 @@ def open_file():
 
 #encode
 def encode():
+    global imgtext
     imgtext=''
     imgfile.seek(225)
     filename=str(imgfilename)
@@ -52,13 +54,22 @@ def encode():
         imgtext=imgtext+char
     textbox.configure(state=NORMAL)
     textbox.delete(1.0,END)
-    textbox.insert(INSERT,imgtext)
+    textbox.insert(INSERT,imgtext[0:20000])
     textbox.configure(state=DISABLED)
 
 #Copy Code
 def copy_text():
     textbox.tag_add(SEL, "1.0", END)
     textbox.event_generate(("<<Copy>>"))
+
+#Save to file
+def Save_to_file():
+        data=[('Text','*.txt')]
+        reportfile=asksaveasfilename(filetypes=data, defaultextension=data)
+        if str(reportfile)!='':
+              reportfilesave=open(reportfile,'w')
+              reportfilesave.write(imgtext)
+              reportfilesave.close()
 
 #Quit
 def QuitApp():
@@ -72,6 +83,7 @@ def create_menu():
     menubar.add_cascade(menu=sub_menu,compound="left", label="Edit")
     sub_menu.add_command(compound="left", label="Open", command=open_file)
     sub_menu.add_command(compound="left",label="Copy", command=copy_text)
+    sub_menu.add_command(compound="left",label="Save", command=Save_to_file)
     menubar.add_command(compound="left",label="Quit", command=QuitApp)
 
 #contextmenu
