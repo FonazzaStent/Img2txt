@@ -80,7 +80,7 @@ def create_menu():
     menubar=tk.Menu(top, tearoff=0)
     top.configure(menu=menubar)
     sub_menu=tk.Menu(top, tearoff=0)
-    menubar.add_cascade(menu=sub_menu,compound="left", label="Edit")
+    menubar.add_cascade(menu=sub_menu,compound="left", label="File")
     sub_menu.add_command(compound="left", label="Open", command=open_file)
     sub_menu.add_command(compound="left",label="Copy", command=copy_text)
     sub_menu.add_command(compound="left",label="Save", command=Save_to_file)
