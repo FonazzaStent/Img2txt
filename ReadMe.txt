@@ -27,4 +27,4 @@ Now load the image into the program:
 
 - Open the program, click on Edit - Open.
 
-The resulting text will appear in the text window. You can copy the text by selecting it and right clicking on it or through the Edit - Copy command, if you want to paste it into another program to save it or email it.
+The resulting text will appear in the text window. The window will display only the first 20.000 characters, which you can copy through File-Copy or by rigth clicking on it. If you want to read the whole text you must save it, through the Save command in the File menu.
