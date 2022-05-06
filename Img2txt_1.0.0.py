@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 from tkinter import *
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import asksaveasfilename
+from tkinter import messagebox
 import base64
 import os
 
@@ -73,7 +74,9 @@ def Save_to_file():
 
 #Quit
 def QuitApp():
-    top.destroy()
+    okcancel= messagebox.askokcancel("Quit?","Do you want to quit the app?",default="ok")
+    if okcancel== True:
+        top.destroy()
 
 #menu
 def create_menu():
@@ -84,7 +87,23 @@ def create_menu():
     sub_menu.add_command(compound="left", label="Open", command=open_file)
     sub_menu.add_command(compound="left",label="Copy", command=copy_text)
     sub_menu.add_command(compound="left",label="Save", command=Save_to_file)
-    menubar.add_command(compound="left",label="Quit", command=QuitApp)
+    sub_menu.add_command(compound="left",label="Quit", command=QuitApp)
+    top.bind_all("<Control-o>",open_file_hotkey)
+    top.bind_all("<Control-c>",copy_hotkey)
+    top.bind_all("<Control-s>",Save_hotkey)
+    top.bind_all("<Control-q>",Quit_hotkey)
+
+def open_file_hotkey(event):
+    open_file()
+
+def copy_hotkey(event):
+    copy_text()
+
+def Save_hotkey(event):
+    Save_to_file()
+
+def Quit_hotkey (event):
+    QuitApp()
 
 #contextmenu
 def context_menu(event):
