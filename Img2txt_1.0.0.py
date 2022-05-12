@@ -7,6 +7,11 @@ from tkinter import messagebox
 import base64
 import os
 
+#init
+def init():
+        global textcheck
+        textcheck=0
+
 #Create app window
 def create_app_window():
         global top
@@ -57,6 +62,9 @@ def encode():
     textbox.delete(1.0,END)
     textbox.insert(INSERT,imgtext[0:20000])
     textbox.configure(state=DISABLED)
+    textcheck=1
+    imgfile.close()
+    
 
 #Copy Code
 def copy_text():
@@ -65,6 +73,8 @@ def copy_text():
 
 #Save to file
 def Save_to_file():
+        if textcheck!=1:
+                imgtext=' '
         data=[('Text','*.txt')]
         reportfile=asksaveasfilename(filetypes=data, defaultextension=data)
         if str(reportfile)!='':
@@ -84,14 +94,15 @@ def create_menu():
     top.configure(menu=menubar)
     sub_menu=tk.Menu(top, tearoff=0)
     menubar.add_cascade(menu=sub_menu,compound="left", label="File")
-    sub_menu.add_command(compound="left", label="Open", command=open_file)
-    sub_menu.add_command(compound="left",label="Copy", command=copy_text)
-    sub_menu.add_command(compound="left",label="Save", command=Save_to_file)
-    sub_menu.add_command(compound="left",label="Quit", command=QuitApp)
-    top.bind_all("<Control-o>",open_file_hotkey)
-    top.bind_all("<Control-c>",copy_hotkey)
-    top.bind_all("<Control-s>",Save_hotkey)
-    top.bind_all("<Control-q>",Quit_hotkey)
+    sub_menu.add_command(compound="left", label="Open", command=open_file, accelerator="Alt+O")
+    sub_menu.add_command(compound="left",label="Copy", command=copy_text, accelerator="Alt+C")
+    sub_menu.add_command(compound="left",label="Save", command=Save_to_file,accelerator="Alt+S")
+    sub_menu.add_command(compound="left",label="Quit", command=QuitApp, accelerator="Alt+Q")
+    top.bind_all("<Alt-o>",open_file_hotkey)
+    top.bind_all("<Alt-c>",copy_hotkey)
+    top.bind_all("<Alt-s>",Save_hotkey)
+    top.bind_all("<Alt-q>",Quit_hotkey)
+    menubar.bind_all("<Alt-f>",menubar.invoke(1))
 
 def open_file_hotkey(event):
     open_file()
@@ -119,6 +130,7 @@ def create_context_menu():
 
 #main procedure
 def main():
+    init()
     create_app_window()
     create_textbox()
     create_menu()
