@@ -75,6 +75,7 @@ def copy_text():
 #Save to file
 def Save_to_file():
         global imgtext
+        global textcheck
         if textcheck!=1:
                 imgtext=' '
         data=[('Text','*.txt')]
