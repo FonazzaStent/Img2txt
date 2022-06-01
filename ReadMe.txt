@@ -9,8 +9,3 @@ Instructions:
 
 The resulting text will appear in the text window. The window will display only the first 20.000 characters, which you can copy through File-Copy or by rigth clicking on it (or Alt-C). If you want to read the whole text you must save it, through the Save command in the File menu or Alt-S. Because the program converts the image file through two different algorithms only the first one will be displayed partially in the window and the second one will be contained in the saved text file. File-Quit or Alt-Q to quit the program.
 
-
-New from version 1.0.0
-
-- can now convert images in JPG, PNG and BMP format
-- no need to process the image first
